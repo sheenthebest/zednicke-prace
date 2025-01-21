@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomáš Kamenský - Zednické práce</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-lg fixed-top" :class="{ 'navbar-scrolled': isScrolled }">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="images/profile.jpg" alt="Logo" class="navbar-logo me-2">
+                    <span class="brand-text">
+                        <strong>Tomáš Kamenský</strong>
+                        <small class="d-block brand-subtitle">Zednické práce</small>
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#domu" 
+                               :class="{ 'active': activeSection === 'domu' }">
+                                <i class="bi bi-house-door"></i> Domů
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sluzby"
+                               :class="{ 'active': activeSection === 'sluzby' }">
+                                <i class="bi bi-tools"></i> Služby
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#galerie"
+                               :class="{ 'active': activeSection === 'galerie' }">
+                                <i class="bi bi-images"></i> Galerie
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#kontakt"
+                               :class="{ 'active': activeSection === 'kontakt' }">
+                                <i class="bi bi-envelope"></i> Kontakt
+                            </a>
+                        </li>
+                        <li class="nav-item ms-lg-3">
+                            <a class="btn btn-secondary nav-btn" href="tel:+420XXXXXXXXX">
+                                <i class="bi bi-telephone"></i> +420 123 456 789
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header id="domu" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-slider" ref="heroSlider">
+                <div v-for="i in 2" :key="i" class="hero-slide"
+                     :style="{ backgroundImage: `url(images/wallpapers/bg${i}.png)` }"
+                     :class="{ active: currentSlide === i }">
+                </div>
+            </div>
+            <div class="container text-white hero-content">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-center">
+                        <h1 class="hero-title mb-4" data-aos="fade-up">
+                            Profesionální stavební <span class="text-primary">realizace</span>
+                        </h1>
+                        <p class="hero-subtitle mb-5" data-aos="fade-up" data-aos-delay="100">
+                            Zednické služby na klíč s důrazem na kvalitu a spokojenost zákazníka
+                        </p>
+                        <div class="hero-features" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature">
+                                <i class="bi bi-check2-circle"></i>
+                                <span>Obkladačské práce</span>
+                            </div>
+                            <div class="feature">
+                                <i class="bi bi-check2-circle"></i>
+                                <span>SDK konstrukce</span>
+                            </div>
+                            <div class="feature">
+                                <i class="bi bi-check2-circle"></i>
+                                <span>Ztracené bednění</span>
+                            </div>
+                        </div>
+                        <div class="hero-buttons mt-5" data-aos="fade-up" data-aos-delay="300">
+                            <a href="#kontakt" class="btn btn-primary btn-lg">
+                                <i class="bi bi-envelope-fill me-2"></i>Nezávazná poptávka
+                            </a>
+                            <a href="#galerie" class="btn btn-outline-light btn-lg">
+                                <i class="bi bi-images me-2"></i>Reference
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="sluzby" class="services-section py-5">
+            <div class="container">
+                <div class="section-header text-center" data-aos="fade-up">
+                    <h2 class="display-5 mb-3">Naše služby</h2>
+                    <p class="text-muted">Kvalitní zednické služby pro vaši spokojenost a pohodlí</p>
+                </div>
+                
+                <div class="row g-4 mt-4">
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-card" @mouseover="activeService = 1" @mouseleave="activeService = null" :class="{ 'active': activeService === 1 }">
+                            <div class="service-icon">
+                                <i class="bi bi-grid-3x3-gap"></i>
+                            </div>
+                            <h3>Obkladačské a zednické práce</h3>
+                            <div class="service-description">
+                                <ul>
+                                    <li>Pokládka obkladů a dlažby</li>
+                                    <li>Přesné spárování a řezání</li>
+                                    <li>Interiérové a exteriérové realizace</li>
+                                    <li>Kompletní zednické práce</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-card" @mouseover="activeService = 2" @mouseleave="activeService = null" :class="{ 'active': activeService === 2 }">
+                            <div class="service-icon">
+                                <i class="bi bi-layers"></i>
+                            </div>
+                            <h3>SDK konstrukce</h3>
+                            <div class="service-description">
+                                <ul>
+                                    <li>Montáž sádrokartonových příček</li>
+                                    <li>Realizace podhledů</li>
+                                    <li>Předstěny a šachty</li>
+                                    <li>Podkrovní vestavby</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-card" @mouseover="activeService = 3" @mouseleave="activeService = null" :class="{ 'active': activeService === 3 }">
+                            <div class="service-icon">
+                                <i class="bi bi-bricks"></i>
+                            </div>
+                            <h3>Ztracené bednění</h3>
+                            <div class="service-description">
+                                <ul>
+                                    <li>Výstavba opěrných zdí</li>
+                                    <li>Základové konstrukce</li>
+                                    <li>Přesná nivelace terénu</li>
+                                    <li>Betonáž a armování</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galerie" class="gallery-section py-5">
+            <div class="container">
+                <div class="section-header text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-5 mb-3">Galerie realizací</h2>
+                    <p class="text-muted">Prohlédněte si naše dokončené projekty</p>
+                </div>
+
+                <div class="gallery-grid" data-aos="fade-up">
+                    <div v-for="n in imagesLoaded" :key="n" class="gallery-item" @click="openImage(n)">
+                        <div class="gallery-image-wrapper">
+                            <img :src="'images/work/img' + n + '.jpg'" :alt="'Realizace ' + n" 
+                                 class="gallery-image"
+                                 loading="lazy">
+                            <div class="gallery-overlay">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <button @click="loadMore" v-if="!allImagesLoaded" 
+                            class="btn btn-primary btn-lg"
+                            :disabled="isLoading">
+                        <span v-if="isLoading">
+                            <i class="bi bi-arrow-repeat me-2"></i>Načítání...
+                        </span>
+                        <span v-else>
+                            <i class="bi bi-plus-lg me-2"></i>Načíst další
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal pro zobrazení fotek -->
+            <div class="gallery-modal modal fade" id="imageModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-body p-0">
+                            <button type="button" class="gallery-close" data-bs-dismiss="modal">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                            <div class="gallery-navigation">
+                                <button class="gallery-nav gallery-prev" @click="showPrevImage" v-if="selectedImageIndex > 1">
+                                    <i class="bi bi-chevron-left"></i>
+                                </button>
+                                <button class="gallery-nav gallery-next" @click="showNextImage" v-if="selectedImageIndex < totalImages">
+                                    <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </div>
+                            <img :src="selectedImage" class="gallery-modal-image" v-if="selectedImage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt" class="contact-section py-5">
+            <div class="container">
+                <div class="section-header text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-5 mb-3">Kontakt</h2>
+                    <p class="text-muted">Neváhejte mě kontaktovat pro nezávaznou konzultaci</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="contact-card" data-aos="fade-up">
+                            <div class="row align-items-center">
+                                <div class="col-md-5">
+                                    <div class="contact-info-left">
+                                        <div class="contact-avatar">
+                                            <img src="images/profile.jpg" alt="Tomáš Kamenský" class="avatar-image">
+                                        </div>
+                                        
+                                        <h3 class="contact-name">Tomáš Kamenský</h3>
+                                        <p class="contact-position">Zednické a obkladačské práce</p>
+                                    </div>
+                                </div>
+
+                                <!-- Pravý sloupec s detailními informacemi -->
+                                <div class="col-md-7">
+                                    <div class="contact-info-right">
+                                        <div class="contact-details-grid">
+                                            <div class="contact-item">
+                                                <i class="bi-telephone"></i>
+                                                <div class="contact-text">
+                                                    <strong>Telefon</strong>
+                                                    <a href="tel:+420123456789">
+                                                        <span>+420 123 456 789</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="contact-item">
+                                                <i class="bi bi-envelope"></i>
+                                                <div class="contact-text">
+                                                    <strong>Email</strong>
+                                                    <a href="mailto:email@zednicke-prace.cz">
+                                                        <span>email@zednicke-prace.cz</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="contact-item">
+                                                <i class="bi bi-building"></i>
+                                                <div class="contact-text">
+                                                    <strong>IČO</strong>
+                                                    <span>17290422</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="contact-item">
+                                                <i class="bi bi-geo-alt"></i>
+                                                <div class="contact-text">
+                                                    <strong>Působnost</strong>
+                                                    <span>Celá ČR</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal fade" id="imageModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img :src="selectedImage" class="img-fluid" v-if="selectedImage">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
