@@ -17,6 +17,9 @@ const app = Vue.createApp({
     computed: {
         allImagesLoaded() {
             return this.imagesLoaded >= this.totalImages;
+        },
+        currentYear() {
+            return new Date().getFullYear();
         }
     },
     methods: {
