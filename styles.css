@@ -5,6 +5,10 @@
     --navbar-scroll-height: 70px;
 }
 
+body {
+    padding-top: var(--navbar-height);
+}
+
 .navbar {
     background-color: rgba(255, 255, 255, 1.0);
     backdrop-filter: blur(8px);
