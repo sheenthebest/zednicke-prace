@@ -10,7 +10,6 @@ const app = Vue.createApp({
             activeSection: 'domu',
             currentSlide: 1,
             slideInterval: null,
-            activeService: null,
             isLoading: false
         }
     },
@@ -81,6 +80,28 @@ const app = Vue.createApp({
             this.slideInterval = setInterval(() => {
                 this.currentSlide = this.currentSlide % 2 + 1;
             }, 5000);
+        },
+        initializeAnimations() {
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+    
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-triggered');
+                        // Volitelně: Odstranit observer po první animaci
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+    
+            // Pozorování všech elementů s animací
+            document.querySelectorAll('[class*="animate-"]').forEach(element => {
+                observer.observe(element);
+            });
         }
     },
     mounted() {
@@ -98,6 +119,8 @@ const app = Vue.createApp({
                 });
             });
         });
+
+        this.initializeAnimations();
     },
     unmounted() {
         window.removeEventListener('scroll', this.handleScroll);

@@ -492,6 +492,13 @@
     justify-content: space-between;
     padding: 0 1rem;
     pointer-events: none;
+    z-index: 1050;
+}
+.gallery-nav.gallery-prev {
+    margin-right: auto;
+}
+.gallery-nav.gallery-next {
+    margin-left: auto;
 }
 .gallery-nav {
     background: rgba(255, 255, 255, 0.9);
@@ -512,6 +519,20 @@
 }
 .gallery-nav i {
     font-size: 1.5rem;
+}
+.gallery-counter {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    z-index: 1050;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 .contact-section {
@@ -649,12 +670,6 @@
 @media (max-width: 768px) {
     .footer {
         padding: 1.5rem 0 1rem;
-        margin-top: 2rem;
-    }
-    
-    .footer-wave {
-        top: -60px;
-        height: 60px;
     }
 }
 
@@ -784,3 +799,366 @@
         height: 150px;
     }
 }
+
+
+/* animations */
+[class*="animate-"] {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 1. Fade In animace */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.animate-fade-in {
+    animation: fadeIn 1s ease forwards;
+    animation-play-state: paused;
+}
+.animate-fade-in.animate-triggered {
+    visibility: visible;
+    animation-play-state: running;
+}
+
+/* 2. Slide Up animace */
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.animate-slide-up {
+    animation: slideUp 0.8s ease forwards;
+    animation-play-state: paused;
+}
+.animate-slide-up.animate-triggered {
+    visibility: visible;
+    animation-play-state: running;
+}
+
+/* 3. Scale In animace */
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.animate-scale-in {
+    animation: scaleIn 0.6s ease forwards;
+    animation-play-state: paused;
+}
+.animate-scale-in.animate-triggered {
+    visibility: visible;
+    animation-play-state: running;
+}
+
+/* 4. Rotate In animace */
+@keyframes rotateIn {
+    from {
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+.animate-rotate-in {
+    animation: rotateIn 0.8s ease forwards;
+    animation-play-state: paused;
+}
+.animate-rotate-in.animate-triggered {
+    visibility: visible;
+    animation-play-state: running;
+}
+
+/* 5. Bounce animace */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+.animate-bounce {
+    animation: bounce 2s infinite forwards;
+    animation-play-state: paused;
+}
+.animate-bounce.animate-triggered {
+    visibility: visible;
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* 6. Shake animace */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+.animate-shake {
+    animation: shake 0.8s ease-in-out forwards;
+    animation-play-state: paused;
+}
+.animate-shake.animate-triggered {
+    visibility: visible;
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* 7. Pulse animace */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.animate-pulse {
+    animation: pulse 2s infinite forwards;
+    animation-play-state: paused;
+}
+.animate-pulse.animate-triggered {
+    visibility: visible;
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* 8. Slide In Left */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.animate-slide-left {
+    animation: slideInLeft 0.8s ease forwards;
+    animation-play-state: paused;
+}
+.animate-slide-left.animate-triggered {
+    visibility: visible;
+    animation-play-state: running;
+}
+
+/* 9. Slide In Right */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.animate-slide-right {
+    animation: slideInRight 0.8s ease forwards;
+    animation-play-state: paused;
+}
+.animate-slide-right.animate-triggered {
+    visibility: visible;
+    animation-play-state: running;
+}
+
+/* 10. Flip animace */
+@keyframes flip {
+    from {
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: perspective(400px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+.animate-flip {
+    animation: flip 1s ease forwards;
+    backface-visibility: hidden;
+    animation-play-state: paused;
+}
+.animate-flip.animate-triggered {
+    visibility: visible;
+    animation-play-state: running;
+}
+
+/* 11. Floating animace */
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+.animate-floating {
+    animation: floating 3s ease-in-out infinite forwards;
+    animation-play-state: paused;
+}
+.animate-floating.animate-triggered {
+    visibility: visible;
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* 12. Attention Seeker */
+@keyframes attention {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    5% {
+        transform: scale(1.2);
+    }
+    10% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1.1);
+    }
+    20%, 100% {
+        transform: scale(1);
+    }
+}
+.animate-attention {
+    animation: attention 6s infinite forwards;
+    animation-play-state: paused;
+}
+.animate-attention.animate-triggered {
+    visibility: visible;
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* 13. Fade In Up */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+    animation-play-state: paused;
+}
+.animate-fade-in-up.animate-triggered {
+    visibility: visible;
+    animation-play-state: running;
+}
+
+/* 14. Typing efekt */
+@keyframes typing {
+    from {
+        width: 0;
+        opacity: 1;
+    }
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+.animate-typing {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 2s steps(40, end) forwards;
+    animation-play-state: paused;
+}
+.animate-typing.animate-triggered {
+    visibility: visible;
+    animation-play-state: running;
+}
+
+/* 15. Gradient Flow */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+        opacity: 1;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.animate-gradient {
+    background: linear-gradient(270deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% 200%;
+    animation: gradientFlow 3s ease infinite forwards;
+    animation-play-state: paused;
+}
+.animate-gradient.animate-triggered {
+    visibility: visible;
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* Specifické nastavení pro nekonečné animace */
+.animate-infinite {
+    animation-iteration-count: infinite;
+}
+
+/* Možnost pozastavení animace při hover */
+.pause-on-hover:hover {
+    animation-play-state: paused;
+}
+
+
+/* Třídy pro delay */
+.delay-100.animate-triggered { animation-delay: 100ms; }
+.delay-200.animate-triggered { animation-delay: 200ms; }
+.delay-300.animate-triggered { animation-delay: 300ms; }
+.delay-400.animate-triggered { animation-delay: 400ms; }
+.delay-500.animate-triggered { animation-delay: 500ms; }
+.delay-600.animate-triggered { animation-delay: 600ms; }
+.delay-700.animate-triggered { animation-delay: 700ms; }
+.delay-800.animate-triggered { animation-delay: 800ms; }
+.delay-900.animate-triggered { animation-delay: 900ms; }
+.delay-1000.animate-triggered { animation-delay: 1000ms; }
+
+/* Třídy pro trvání */
+.duration-fast { animation-duration: 0.5s; }
+.duration-normal { animation-duration: 1s; }
+.duration-slow { animation-duration: 2s; }

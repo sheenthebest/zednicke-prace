@@ -12,7 +12,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg fixed-top" :class="{ 'navbar-scrolled': isScrolled }">
-            <div class="container">
+            <div class="container animate-fade-in delay-200">
                 <a class="navbar-brand d-flex align-items-center" href="#">
                     <img src="images/profile.jpg" alt="Logo" class="navbar-logo me-2">
                     <span class="brand-text">
@@ -70,13 +70,13 @@
             <div class="container text-white hero-content">
                 <div class="row justify-content-center">
                     <div class="col-lg-10 text-center">
-                        <h1 class="hero-title mb-4" data-aos="fade-up">
+                        <h1 class="hero-title mb-4 animate-fade-in delay-200">
                             Profesionální stavební <span class="text-primary">realizace</span>
                         </h1>
-                        <p class="hero-subtitle mb-5" data-aos="fade-up" data-aos-delay="100">
+                        <p class="hero-subtitle mb-5 animate-fade-in delay-300">
                             Zednické služby na klíč s důrazem na kvalitu a spokojenost zákazníka
                         </p>
-                        <div class="hero-features" data-aos="fade-up" data-aos-delay="200">
+                        <div class="hero-features animate-fade-in delay-400">
                             <div class="feature">
                                 <i class="bi bi-check2-circle"></i>
                                 <span>Obkladačské práce</span>
@@ -90,7 +90,7 @@
                                 <span>Ztracené bednění</span>
                             </div>
                         </div>
-                        <div class="hero-buttons mt-5" data-aos="fade-up" data-aos-delay="300">
+                        <div class="hero-buttons mt-5 animate-fade-in delay-500">
                             <a href="#kontakt" class="btn btn-primary btn-lg">
                                 <i class="bi bi-envelope-fill me-2"></i>Nezávazná poptávka
                             </a>
@@ -105,14 +105,14 @@
 
         <section id="sluzby" class="services-section py-5">
             <div class="container">
-                <div class="section-header text-center" data-aos="fade-up">
-                    <h2 class="display-5 mb-3">Naše služby</h2>
-                    <p class="text-muted">Kvalitní zednické služby pro vaši spokojenost a pohodlí</p>
+                <div class="section-header text-center">
+                    <h2 class="display-5 mb-3 animate-fade-in-up delay-200">Naše služby</h2>
+                    <p class="text-muted animate-fade-in-up delay-300">Kvalitní zednické služby pro vaši spokojenost a pohodlí</p>
                 </div>
                 
                 <div class="row g-4 mt-4">
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-card" @mouseover="activeService = 1" @mouseleave="activeService = null" :class="{ 'active': activeService === 1 }">
+                    <div class="col-lg-4">
+                        <div class="service-card animate-slide-left delay-400">
                             <div class="service-icon">
                                 <i class="bi bi-grid-3x3-gap"></i>
                             </div>
@@ -128,8 +128,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-card" @mouseover="activeService = 2" @mouseleave="activeService = null" :class="{ 'active': activeService === 2 }">
+                    <div class="col-lg-4">
+                        <div class="service-card animate-scale-in delay-400">
                             <div class="service-icon">
                                 <i class="bi bi-layers"></i>
                             </div>
@@ -145,8 +145,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-card" @mouseover="activeService = 3" @mouseleave="activeService = null" :class="{ 'active': activeService === 3 }">
+                    <div class="col-lg-4">
+                        <div class="service-card animate-slide-right delay-400">
                             <div class="service-icon">
                                 <i class="bi bi-bricks"></i>
                             </div>
@@ -167,12 +167,12 @@
 
         <section id="galerie" class="gallery-section py-5">
             <div class="container">
-                <div class="section-header text-center mb-5" data-aos="fade-up">
-                    <h2 class="display-5 mb-3">Galerie realizací</h2>
-                    <p class="text-muted">Prohlédněte si naše dokončené projekty</p>
+                <div class="section-header text-center mb-5">
+                    <h2 class="display-5 mb-3 animate-fade-in-up delay-200">Galerie realizací</h2>
+                    <p class="text-muted animate-fade-in-up delay-300">Prohlédněte si naše dokončené projekty</p>
                 </div>
 
-                <div class="gallery-grid" data-aos="fade-up">
+                <div class="gallery-grid animate-scale-in delay-300">
                     <div v-for="n in imagesLoaded" :key="n" class="gallery-item" @click="openImage(n)">
                         <div class="gallery-image-wrapper">
                             <img :src="'images/work/img' + n + '.jpg'" :alt="'Realizace ' + n" 
@@ -185,7 +185,7 @@
                     </div>
                 </div>
 
-                <div class="text-center mt-5">
+                <div class="text-center mt-5 animate-rotate-in delay-400">
                     <button @click="loadMore" v-if="!allImagesLoaded" 
                             class="btn btn-primary btn-lg"
                             :disabled="isLoading">
@@ -215,6 +215,9 @@
                                     <i class="bi bi-chevron-right"></i>
                                 </button>
                             </div>
+                            <div class="gallery-counter">
+                                {{ selectedImageIndex }} / {{ totalImages }}
+                            </div>
                             <img :src="selectedImage" class="gallery-modal-image" v-if="selectedImage">
                         </div>
                     </div>
@@ -224,23 +227,23 @@
 
         <section id="kontakt" class="contact-section py-5">
             <div class="container">
-                <div class="section-header text-center mb-5" data-aos="fade-up">
-                    <h2 class="display-5 mb-3">Kontakt</h2>
-                    <p class="text-muted">Neváhejte mě kontaktovat pro nezávaznou konzultaci</p>
+                <div class="section-header text-center mb-5">
+                    <h2 class="display-5 mb-3 animate-fade-in-up delay-200">Kontakt</h2>
+                    <p class="text-muted animate-fade-in-up delay-300">Neváhejte mě kontaktovat pro nezávaznou konzultaci</p>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div class="contact-card" data-aos="fade-up">
+                        <div class="contact-card">
                             <div class="row align-items-center">
                                 <div class="col-md-5">
                                     <div class="contact-info-left">
-                                        <div class="contact-avatar">
+                                        <div class="contact-avatar animate-scale-in delay-300">
                                             <img src="images/profile.jpg" alt="Tomáš Kamenský" class="avatar-image">
                                         </div>
                                         
-                                        <h3 class="contact-name">Tomáš Kamenský</h3>
-                                        <p class="contact-position">Zednické a obkladačské práce</p>
+                                        <h3 class="contact-name animate-scale-in delay-400">Tomáš Kamenský</h3>
+                                        <p class="contact-position animate-scale-in delay-500">Zednické a obkladačské práce</p>
                                     </div>
                                 </div>
 
@@ -248,7 +251,7 @@
                                 <div class="col-md-7">
                                     <div class="contact-info-right">
                                         <div class="contact-details-grid">
-                                            <div class="contact-item">
+                                            <div class="contact-item animate-fade-in delay-400">
                                                 <i class="bi-telephone"></i>
                                                 <div class="contact-text">
                                                     <strong>Telefon</strong>
@@ -258,7 +261,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="contact-item">
+                                            <div class="contact-item animate-fade-in delay-300">
                                                 <i class="bi bi-envelope"></i>
                                                 <div class="contact-text">
                                                     <strong>Email</strong>
@@ -268,7 +271,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <div class="contact-item">
+                                            <div class="contact-item animate-fade-in delay-300">
                                                 <i class="bi bi-building"></i>
                                                 <div class="contact-text">
                                                     <strong>IČO</strong>
@@ -276,7 +279,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="contact-item">
+                                            <div class="contact-item animate-fade-in delay-300">
                                                 <i class="bi bi-geo-alt"></i>
                                                 <div class="contact-text">
                                                     <strong>Působnost</strong>
@@ -295,7 +298,7 @@
 
         <footer class="footer">
             <div class="footer-content">
-                <p class="footer-text">
+                <p class="footer-text animate-fade-in delay-200">
                     © {{ currentYear }} Tomáš Kamenský - Všechna práva vyhrazena
                 </p>
             </div>
