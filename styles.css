@@ -1560,7 +1560,7 @@ header.mobile-menu-active .logo-text p {
     border: 1px solid rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    height: 600px;
+    height: 550px;
 }
 
 .project-card:hover {
@@ -1725,9 +1725,9 @@ header.mobile-menu-active .logo-text p {
 }
 
 /* Meta data projektu */
-.project-meta {
-    margin-bottom: 1.5rem;
-}
+/* .project-meta {
+    margin-bottom: 0.5rem;
+} */
 
 .meta-item {
     display: flex;
@@ -1776,14 +1776,6 @@ header.mobile-menu-active .logo-text p {
 
 .project-card:hover .project-cta i {
     transform: translateX(4px);
-}
-
-.project-scope-preview {
-    background-color: rgba(230, 126, 34, 0.1);
-    padding: 5px 10px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    color: var(--secondary-color);
 }
 
 /* Paginace */
