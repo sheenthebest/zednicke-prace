@@ -53,17 +53,14 @@
                 <i class="fas fa-times"></i>
             </button>
             <ul>
+                <li><a href="#hero" :class="{ 'active': activeSection === 'hero' }">
+                    <i class="fas fa-home nav-icon"></i>Domů
+                </a></li>
                 <li><a href="#sluzby" @click="closeMobileMenu" :class="{ 'active': activeSection === 'sluzby' }">
                     <i class="fas fa-tools nav-icon"></i>Služby
                 </a></li>
                 <li><a href="#projekty" @click="closeMobileMenu" :class="{ 'active': activeSection === 'projekty' }">
                     <i class="fas fa-briefcase nav-icon"></i>Projekty
-                </a></li>
-                <li><a href="#galerie" @click="closeMobileMenu" :class="{ 'active': activeSection === 'galerie' }">
-                    <i class="fas fa-images nav-icon"></i>Naše práce
-                </a></li>
-                <li><a href="#o-nas" @click="closeMobileMenu" :class="{ 'active': activeSection === 'o-nas' }">
-                    <i class="fas fa-user nav-icon"></i>O nás
                 </a></li>
                 <li><a href="#kontakt" @click="closeMobileMenu" :class="{ 'active': activeSection === 'kontakt' }">
                     <i class="fas fa-envelope nav-icon"></i>Kontakt

@@ -3350,10 +3350,10 @@ a.info-value:hover {
         display: none;
     }
     
-    .hero {
+    /* .hero {
         min-height: auto;
         padding: 100px 0 50px;
-    }
+    } */
     
     .hero-tagline {
         font-size: 0.8rem;
