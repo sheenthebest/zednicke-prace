@@ -900,7 +900,7 @@ header.mobile-menu-active .logo-text p {
 ============================================= */
 .hero {
     min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/wallpapers/bg1.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/wallpapers/bg1.png');
     background-size: cover;
     background-position: center;
     color: white;
