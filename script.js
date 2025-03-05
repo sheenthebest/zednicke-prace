@@ -601,7 +601,17 @@ const app = createApp({
             touchEndX.value = event.touches[0].clientX;
         };
 
+        // Upravená funkce handleTouchEnd, která na mobilních zařízeních nechá
+        // fungovat nativní scrollování místo vlastního přeskakování o celou stránku
         const handleTouchEnd = () => {
+            // Na mobilních zařízeních (menší než 768px) neděláme nic a necháme nativní scroll fungovat
+            if (window.innerWidth < 768) {
+                // Reset hodnot
+                touchStartX.value = 0;
+                touchEndX.value = 0;
+                return;
+            }
+            
             const swipeThreshold = 50; // Minimální posun pro detekci swipe
             const swipeDistance = touchStartX.value - touchEndX.value;
             
