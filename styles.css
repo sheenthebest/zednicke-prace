@@ -485,6 +485,11 @@ header.mobile-menu-active .logo-text p {
 
 /* Drobné úpravy pro různé velikosti obrazovek */
 @media (max-width: 576px) {
+    .hero {
+        background-size: 250%;  /* Větší hodnota = méně zoomu */
+        background-position: center center;
+    }
+
     .mobile-menu {
         padding-top: 70px;
     }
@@ -901,9 +906,13 @@ header.mobile-menu-active .logo-text p {
 .hero {
     min-height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/wallpapers/bg1.png');
+    /* background-size: cover;
+    background-position: center;
+    background-attachment: fixed; */
+
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+
     color: white;
     padding: 0;
     position: relative;
@@ -3167,6 +3176,11 @@ a.info-value:hover {
 
 /* Malé tablety a velké mobilní telefony */
 @media (max-width: 768px) {
+    .hero {
+        background-size: cover;
+        background-position: center top;
+    }
+
     .hero-content {
         padding-top: 50px;
     }
