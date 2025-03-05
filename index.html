@@ -3,161 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomáš Kamenský - Zednické práce</title>
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <title>Tomáš Kamenský</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg fixed-top" :class="{ 'navbar-scrolled': isScrolled }">
-            <div class="container animate-fade-in delay-200">
-                <a class="navbar-brand d-flex align-items-center" href="#">
-                    <img src="images/profile.jpg" alt="Logo" class="navbar-logo me-2">
-                    <span class="brand-text">
-                        <strong>Tomáš Kamenský</strong>
-                        <small class="d-block brand-subtitle">Zednické práce</small>
-                    </span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#domu" 
-                               :class="{ 'active': activeSection === 'domu' }">
-                                <i class="bi bi-house-door"></i> Domů
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#sluzby"
-                               :class="{ 'active': activeSection === 'sluzby' }">
-                                <i class="bi bi-tools"></i> Služby
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#galerie"
-                               :class="{ 'active': activeSection === 'galerie' }">
-                                <i class="bi bi-images"></i> Galerie
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#kontakt"
-                               :class="{ 'active': activeSection === 'kontakt' }">
-                                <i class="bi bi-envelope"></i> Kontakt
-                            </a>
-                        </li>
-                        <li class="nav-item ms-lg-3">
-                            <a class="btn btn-secondary nav-btn" href="tel:+420XXXXXXXXX">
-                                <i class="bi bi-telephone"></i> +420 123 456 789
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <header id="domu" class="hero-section">
-            <div class="hero-overlay"></div>
-            <div class="hero-slider" ref="heroSlider">
-                <div v-for="i in 2" :key="i" class="hero-slide"
-                     :style="{ backgroundImage: `url(images/wallpapers/bg${i}.png)` }"
-                     :class="{ active: currentSlide === i }">
-                </div>
-            </div>
-            <div class="container text-white hero-content">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10 text-center">
-                        <h1 class="hero-title mb-4 animate-fade-in delay-200">
-                            Profesionální stavební <span class="text-primary">realizace</span>
-                        </h1>
-                        <p class="hero-subtitle mb-5 animate-fade-in delay-300">
-                            Zednické služby na klíč s důrazem na kvalitu a spokojenost zákazníka
-                        </p>
-                        <div class="hero-features animate-fade-in delay-400">
-                            <div class="feature">
-                                <i class="bi bi-check2-circle"></i>
-                                <span>Obkladačské práce</span>
-                            </div>
-                            <div class="feature">
-                                <i class="bi bi-check2-circle"></i>
-                                <span>SDK konstrukce</span>
-                            </div>
-                            <div class="feature">
-                                <i class="bi bi-check2-circle"></i>
-                                <span>Ztracené bednění</span>
-                            </div>
-                        </div>
-                        <div class="hero-buttons mt-5 animate-fade-in delay-500">
-                            <a href="#kontakt" class="btn btn-primary btn-lg">
-                                <i class="bi bi-envelope-fill me-2"></i>Nezávazná poptávka
-                            </a>
-                            <a href="#galerie" class="btn btn-outline-light btn-lg">
-                                <i class="bi bi-images me-2"></i>Reference
-                            </a>
-                        </div>
+        <!-- Header -->
+        <header :class="{ 'scrolled': isScrolled }">
+            <div class="header-container animate animate-scale animate-duration-1000">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-hard-hat"></i>
                     </div>
+                    <div class="logo-text">
+                        <h1>Tomáš Kamenský</h1>
+                        <p>Profesionální stavební služby</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#hero" :class="{ 'active': activeSection === 'hero' }">
+                            <i class="fas fa-home nav-icon"></i>Domů
+                        </a></li>
+                        <li><a href="#sluzby" :class="{ 'active': activeSection === 'sluzby' }">
+                            <i class="fas fa-tools nav-icon"></i>Služby
+                        </a></li>
+                        <li><a href="#projekty" :class="{ 'active': activeSection === 'projekty' }">
+                            <i class="fas fa-briefcase nav-icon"></i>Projekty
+                        </a></li>
+                        <li><a href="#kontakt" :class="{ 'active': activeSection === 'kontakt' }">
+                            <i class="fas fa-envelope nav-icon"></i>Kontakt
+                        </a></li>
+                    </ul>
+                </nav>
+                <div class="header-cta-button">
+                    <a href="#kontakt" class="btn-outline">Nezávazná poptávka</a>
+                </div>
+                <div class="menu-toggle" @click="toggleMobileMenu">
+                    <i class="fas" :class="mobileMenuActive ? 'fa-times' : 'fa-bars'"></i>
                 </div>
             </div>
         </header>
 
-        <section id="sluzby" class="services-section py-5">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="display-5 mb-3 animate-fade-in-up delay-200">Naše služby</h2>
-                    <p class="text-muted animate-fade-in-up delay-300">Kvalitní zednické služby pro vaši spokojenost a pohodlí</p>
+        <!-- Upravený kód pro mobilní menu v HTML -->
+        <div class="mobile-menu" :class="{ 'active': mobileMenuActive }">
+            <button class="mobile-close-btn" @click="closeMobileMenu">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li><a href="#sluzby" @click="closeMobileMenu" :class="{ 'active': activeSection === 'sluzby' }">
+                    <i class="fas fa-tools nav-icon"></i>Služby
+                </a></li>
+                <li><a href="#projekty" @click="closeMobileMenu" :class="{ 'active': activeSection === 'projekty' }">
+                    <i class="fas fa-briefcase nav-icon"></i>Projekty
+                </a></li>
+                <li><a href="#galerie" @click="closeMobileMenu" :class="{ 'active': activeSection === 'galerie' }">
+                    <i class="fas fa-images nav-icon"></i>Naše práce
+                </a></li>
+                <li><a href="#o-nas" @click="closeMobileMenu" :class="{ 'active': activeSection === 'o-nas' }">
+                    <i class="fas fa-user nav-icon"></i>O nás
+                </a></li>
+                <li><a href="#kontakt" @click="closeMobileMenu" :class="{ 'active': activeSection === 'kontakt' }">
+                    <i class="fas fa-envelope nav-icon"></i>Kontakt
+                </a></li>
+            </ul>
+            <div class="mobile-cta">
+                <a href="#kontakt" class="btn-primary" @click="closeMobileMenu">
+                    <i class="fas fa-envelope-open"></i>Nezávazná poptávka
+                </a>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-overlay"></div>
+            <div class="section-shapes animate animate-scale animate-duration-1000">
+                <div class="shape shape-md shape-bottom-left-corner shape-primary shape-opacity-15"></div>
+                <div class="shape shape-sm shape-center-right shape-accent shape-blur-light"></div>
+                <div class="shape shape-lg shape-diagonal-top-left shape-gradient-3 shape-sway"></div>
+            </div>
+
+            <div class="hero-container">
+                <div class="hero-content animate animate-scale animate-duration-1000">
+                    <div class="hero-tagline">Stavební řemeslo v moderním pojetí</div>
+                    <h2 class="hero-title">Realizujeme vaše 
+                        <span class="hero-highlighted">stavební
+                            <svg class="hero-underline" width="100%" height="15" viewBox="0 0 520 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 7.5C119.667 3.5 373.4 -2.7 513 7.5" stroke="#e67e22" stroke-width="13" stroke-linecap="round"/>
+                            </svg>
+                        </span> 
+                        sny
+                    </h2>
+                    <p class="hero-description">Profesionální zednické práce a stavební služby zaměřené na detail a spokojenost zákazníka. Od obkladů po ztracené bednění.</p>
+                    <div class="hero-buttons">
+                        <a href="#kontakt" class="btn btn-primary">
+                            <i class="fas fa-envelope-open"></i>
+                            Nezávazná poptávka
+                        </a>
+                        <a href="#projekty" class="btn btn-secondary">
+                            <i class="fas fa-images"></i>
+                            Projekty
+                        </a>
+                    </div>
+                    <div class="hero-features">
+                        <div class="hero-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Profesionální přístup</span>
+                        </div>
+                        <div class="hero-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>10+ let zkušeností</span>
+                        </div>
+                        <div class="hero-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Férové ceny</span>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="row g-4 mt-4">
-                    <div class="col-lg-4">
-                        <div class="service-card animate-slide-left delay-400">
-                            <div class="service-icon">
-                                <i class="bi bi-grid-3x3-gap"></i>
+
+                <div class="hero-image animate animate animate-scale animate-duration-1000">
+                    <div class="hero-showcase">
+                        <div class="hero-showcase-item" v-for="index in 3" :key="index">
+                            <div class="showcase-image" :style="{ backgroundImage: `url('images/work/img${index}.jpg')` }">
+                                <div class="showcase-overlay"></div>
                             </div>
-                            <h3>Obkladačské a zednické práce</h3>
-                            <div class="service-description">
-                                <ul>
-                                    <li>Pokládka obkladů a dlažby</li>
-                                    <li>Přesné spárování a řezání</li>
-                                    <li>Interiérové a exteriérové realizace</li>
-                                    <li>Kompletní zednické práce</li>
-                                </ul>
+                            <div class="showcase-caption">
+                                <span v-if="index === 1">Kvalitní obklady</span>
+                                <span v-if="index === 2">Přesné zdění</span>
+                                <span v-if="index === 3">Moderní řešení</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <a href="#sluzby" class="hero-scroll-down">
+                <span>Prohlédnout nabídku</span>
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
 
-                    <div class="col-lg-4">
-                        <div class="service-card animate-scale-in delay-400">
-                            <div class="service-icon">
-                                <i class="bi bi-layers"></i>
+        <!-- Services Section -->
+        <section id="sluzby" class="services">
+            <div class="section-header animate animate-scale animate-duration-1000">
+                <h2>Služby</h2>
+                <p>Profesionální stavební služby s důrazem na kvalitu</p>
+            </div>
+
+            <div class="section-shapes animate animate-scale animate-duration-1000">
+                <div class="shape shape-xl shape-bottom-left shape-primary shape-blur-medium"></div>
+                <div class="shape shape-md shape-upper-third-right shape-accent shape-spin-slow"></div>
+                <div class="shape shape-sm shape-center-left shape-gradient-4 shape-opacity-15"></div>
+            </div>
+            
+            <div class="services-container">
+                <div class="services-timeline">
+                    <!-- Služba 1 -->
+                    <div class="service-item animate animate-scale animate-duration-1000">
+                        <div class="timeline-dot"></div>
+                        <div class="service-image-wrapper">
+                            <div class="service-image-circle">
+                                <img src="images/work/img1.jpg" alt="Obkladačské a zednické práce">
+                                <div class="service-btn-wrapper">
+                                    <button class="service-btn" @click="openServiceModal('obkladacske')">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <h3>SDK konstrukce</h3>
-                            <div class="service-description">
-                                <ul>
-                                    <li>Montáž sádrokartonových příček</li>
-                                    <li>Realizace podhledů</li>
-                                    <li>Předstěny a šachty</li>
-                                    <li>Podkrovní vestavby</li>
-                                </ul>
+                            <div class="service-icon-badge">
+                                <i class="fas fa-home"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <span class="service-number">01</span>
+                                <h3>Obkladačské a zednické práce</h3>
+                            </div>
+                            <p>Profesionální pokládka obkladů a dlažeb, zdění, omítky a další zednické práce nejvyšší kvality. Veškeré práce provádíme s důrazem na preciznost a dlouhodobou trvanlivost.</p>
+                            <div class="service-features">
+                                <span><i class="fas fa-check"></i> Obklady koupelen</span>
+                                <span><i class="fas fa-check"></i> Dlažby interiérů</span>
+                                <span><i class="fas fa-check"></i> Rekonstrukce</span>
+                            </div>
+                            <div class="service-action">
+                                <button class="btn-more" @click="openServiceModal('obkladacske')">
+                                    Zobrazit více <i class="fas fa-arrow-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4">
-                        <div class="service-card animate-slide-right delay-400">
-                            <div class="service-icon">
-                                <i class="bi bi-bricks"></i>
+                    
+                    <!-- Služba 2 -->
+                    <div class="service-item animate animate-scale animate-duration-1000">
+                        <div class="timeline-dot"></div>
+                        <div class="service-image-wrapper">
+                            <div class="service-image-circle">
+                                <img src="images/work/img2.jpg" alt="SDK konstrukce">
+                                <div class="service-btn-wrapper">
+                                    <button class="service-btn" @click="openServiceModal('sdk')">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <h3>Ztracené bednění</h3>
-                            <div class="service-description">
-                                <ul>
-                                    <li>Výstavba opěrných zdí</li>
-                                    <li>Základové konstrukce</li>
-                                    <li>Přesná nivelace terénu</li>
-                                    <li>Betonáž a armování</li>
-                                </ul>
+                            <div class="service-icon-badge">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <span class="service-number">02</span>
+                                <h3>SDK konstrukce</h3>
+                            </div>
+                            <p>Realizace sádrokartonových podhledů, příček, předstěn a dalších konstrukcí včetně designových prvků. SDK konstrukce nabízí rychlé a čisté řešení pro váš interiér.</p>
+                            <div class="service-features">
+                                <span><i class="fas fa-check"></i> Podhledy</span>
+                                <span><i class="fas fa-check"></i> Příčky</span>
+                                <span><i class="fas fa-check"></i> Designové prvky</span>
+                            </div>
+                            <div class="service-action">
+                                <button class="btn-more" @click="openServiceModal('sdk')">
+                                    Zobrazit více <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Služba 3 -->
+                    <div class="service-item animate animate-scale animate-duration-1000">
+                        <div class="timeline-dot"></div>
+                        <div class="service-image-wrapper">
+                            <div class="service-image-circle">
+                                <img src="images/work/img3.jpg" alt="Ztracené bednění">
+                                <div class="service-btn-wrapper">
+                                    <button class="service-btn" @click="openServiceModal('ztracene')">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="service-icon-badge">
+                                <i class="fas fa-border-all"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <span class="service-number">03</span>
+                                <h3>Ztracené bednění</h3>
+                            </div>
+                            <p>Výstavba opěrných zdí, podezdívek a dalších konstrukcí pomocí ztraceného bednění. Robustní a odolné řešení pro venkovní stavby s vynikající životností.</p>
+                            <div class="service-features">
+                                <span><i class="fas fa-check"></i> Opěrné zdi</span>
+                                <span><i class="fas fa-check"></i> Podezdívky</span>
+                                <span><i class="fas fa-check"></i> Základy</span>
+                            </div>
+                            <div class="service-action">
+                                <button class="btn-more" @click="openServiceModal('ztracene')">
+                                    Zobrazit více <i class="fas fa-arrow-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -165,158 +267,382 @@
             </div>
         </section>
 
-        <section id="galerie" class="gallery-section py-5">
-            <div class="container">
-                <div class="section-header text-center mb-5">
-                    <h2 class="display-5 mb-3 animate-fade-in-up delay-200">Galerie realizací</h2>
-                    <p class="text-muted animate-fade-in-up delay-300">Prohlédněte si naše dokončené projekty</p>
-                </div>
+        <!-- Sekce Realizované projekty -->
+        <section id="projekty" class="projects">
+            <div class="section-header animate animate-scale animate-duration-1000">
+                <h2>Realizované projekty</h2>
+                <p>Přehled našich úspěšně dokončených zakázek</p>
+            </div>
 
-                <div class="gallery-grid animate-scale-in delay-300">
-                    <div v-for="n in imagesLoaded" :key="n" class="gallery-item" @click="openImage(n)">
-                        <div class="gallery-image-wrapper">
-                            <img :src="'images/work/img' + n + '.jpg'" :alt="'Realizace ' + n" 
-                                 class="gallery-image"
-                                 loading="lazy">
-                            <div class="gallery-overlay">
-                                <i class="bi bi-zoom-in"></i>
+            <div class="section-shapes animate animate-scale animate-duration-1000">
+                <div class="shape shape-lg shape-float-top shape-gradient-5 shape-blend-overlay"></div>
+                <div class="shape shape-md shape-lower-third-left shape-primary shape-opacity-5 shape-bounce"></div>
+                <div class="shape shape-xl shape-edge-right shape-blur-heavy shape-secondary"></div>
+                <div class="shape shape-sm shape-diagonal-bottom-right shape-accent shape-rotate-45"></div>
+            </div>
+
+            <div class="projects-container animate animate-scale animate-duration-1000">
+                <div class="projects-slider-container">
+                    <button class="slider-nav-btn prev" @click="prevProjectsSlide" :class="{ 'disabled': currentProjectsPage === 0 }">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="projects-slider"
+                         @touchstart="handleTouchStart"
+                         @touchmove="handleTouchMove"
+                         @touchend="handleTouchEnd">
+                        <div class="projects-track" :style="{ transform: `translateX(${-currentProjectsPage * 100}%)` }">
+                            <div v-for="(project, index) in projects" 
+                                 :key="project.id" 
+                                 class="project-card"
+                                 @click="openProjectModal(project.id)">
+                                <div class="project-status-badge">
+                                    <span>Dokončeno</span>
+                                </div>
+                                <div class="project-image-wrapper">
+                                    <div class="project-image">
+                                        <img :src="project.mainImage" :alt="project.title">
+                                    </div>
+                                    <div class="project-image-overlay">
+                                        <div class="overlay-content">
+                                            <div class="overlay-icon">
+                                                <i class="fas fa-search-plus"></i>
+                                            </div>
+                                            <span class="overlay-text">Zobrazit detail</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="project-header">
+                                        <h3 class="project-title">{{ project.title }}</h3>
+                                        <div class="project-date">{{ project.date }}</div>
+                                    </div>
+                                    <div class="project-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-building"></i>
+                                            <span>{{ project.client }}</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <span>{{ project.location }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-footer">
+                                        <!-- <span class="project-cta">
+                                            <span class="cta-text">Prohlédnout</span>
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span> -->
+                                        <div class="project-scope-preview">
+                                            <span>{{ project.scope.length }} pracovních úkonů</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="text-center mt-5 animate-rotate-in delay-400">
-                    <button @click="loadMore" v-if="!allImagesLoaded" 
-                            class="btn btn-primary btn-lg"
-                            :disabled="isLoading">
-                        <span v-if="isLoading">
-                            <i class="bi bi-arrow-repeat me-2"></i>Načítání...
-                        </span>
-                        <span v-else>
-                            <i class="bi bi-plus-lg me-2"></i>Načíst další
-                        </span>
+                    
+                    <button class="slider-nav-btn next" @click="nextProjectsSlide" :class="{ 'disabled': currentProjectsPage >= maxProjectsPages }">
+                        <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
+                
+                <div class="projects-pagination">
+                    <span v-for="page in totalProjectsPages" 
+                          :key="page" 
+                          class="pagination-dot" 
+                          :class="{ 'active': currentProjectsPage === page - 1 }"
+                          @click="goToProjectsPage(page - 1)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontakt" class="contact">
+            <div class="section-header animate animate-scale animate-duration-1000">
+                <h2>Kontakt</h2>
+                <p>Neváhejte mě kontaktovat pro nezávaznou konzultaci či cenovou nabídku</p>
             </div>
 
-            <!-- Modal pro zobrazení fotek -->
-            <div class="gallery-modal modal fade" id="imageModal" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-body p-0">
-                            <button type="button" class="gallery-close" data-bs-dismiss="modal">
-                                <i class="bi bi-x-lg"></i>
-                            </button>
-                            <div class="gallery-navigation">
-                                <button class="gallery-nav gallery-prev" @click="showPrevImage" v-if="selectedImageIndex > 1">
-                                    <i class="bi bi-chevron-left"></i>
-                                </button>
-                                <button class="gallery-nav gallery-next" @click="showNextImage" v-if="selectedImageIndex < totalImages">
-                                    <i class="bi bi-chevron-right"></i>
-                                </button>
+            <div class="section-shapes animate animate-scale animate-duration-1000">
+                <div class="shape shape-xl shape-bottom-right-corner shape-gradient-1 shape-opacity-10"></div>
+                <div class="shape shape-lg shape-upper-third-left shape-primary shape-spin"></div>
+                <div class="shape shape-md shape-overlap-top-right shape-secondary shape-blur-light"></div>
+                <div class="shape shape-sm shape-edge-left shape-accent shape-float-reverse"></div>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-card">
+                    <div class="contact-profile">
+                        <div class="profile-image animate animate-scale animate-duration-1000">
+                            <img src="images/profile.jpg" alt="Tomáš Kamenský">
+                        </div>
+                        <div class="profile-details animate animate-scale animate-duration-1000">
+                            <h3>Tomáš Kamenský</h3>
+                            <span class="profile-title">Zedník & obkladač</span>
+                            <p class="profile-description">
+                                Jsem profesionální zedník s více než 20 lety zkušeností v oboru. 
+                                Specializuji se na kvalitní obkladačské a zednické práce, realizaci 
+                                SDK konstrukcí a výstavbu opěrných zdí pomocí ztraceného bednění.
+                            </p>
+                            <div class="profile-badges">
+                                <span><i class="fas fa-medal"></i> 20+ let zkušeností</span>
+                                <span><i class="fas fa-certificate"></i> Kvalitní materiály</span>
+                                <span><i class="fas fa-thumbs-up"></i> Spokojení zákazníci</span>
                             </div>
-                            <div class="gallery-counter">
-                                {{ selectedImageIndex }} / {{ totalImages }}
-                            </div>
-                            <img :src="selectedImage" class="gallery-modal-image" v-if="selectedImage">
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="info-group">
+                            <h4>Kontaktní údaje</h4>
+                            <ul class="info-list">
+                                <li>
+                                    <div class="info-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <span class="info-label">Telefon</span>
+                                        <a href="tel:+420123456789" class="info-value">+420 123 456 789</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <span class="info-label">Email</span>
+                                        <a href="mailto:tomas.kamensky@email.cz" class="info-value">tomas.kamensky@email.cz</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <span class="info-label">Adresa</span>
+                                        <address class="info-value">Ulice 123, 123 45 Město</address>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info-group">
+                            <h4>Firemní údaje</h4>
+                            <ul class="info-list">
+                                <li>
+                                    <div class="info-icon">
+                                        <i class="fas fa-id-card"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <span class="info-label">IČO</span>
+                                        <span class="info-value">12345678</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-icon">
+                                        <i class="fas fa-globe-europe"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <span class="info-label">Působnost</span>
+                                        <span class="info-value">Praha a Středočeský kraj</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <span class="info-label">Provozní doba</span>
+                                        <span class="info-value">Po-Pá: 8:00 - 18:00</span>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="kontakt" class="contact-section py-5">
-            <div class="container">
-                <div class="section-header text-center mb-5">
-                    <h2 class="display-5 mb-3 animate-fade-in-up delay-200">Kontakt</h2>
-                    <p class="text-muted animate-fade-in-up delay-300">Neváhejte mě kontaktovat pro nezávaznou konzultaci</p>
-                </div>
-
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="contact-card">
-                            <div class="row align-items-center">
-                                <div class="col-md-5">
-                                    <div class="contact-info-left">
-                                        <div class="contact-avatar animate-scale-in delay-300">
-                                            <img src="images/profile.jpg" alt="Tomáš Kamenský" class="avatar-image">
-                                        </div>
-                                        
-                                        <h3 class="contact-name animate-scale-in delay-400">Tomáš Kamenský</h3>
-                                        <p class="contact-position animate-scale-in delay-500">Zednické a obkladačské práce</p>
-                                    </div>
-                                </div>
-
-                                <!-- Pravý sloupec s detailními informacemi -->
-                                <div class="col-md-7">
-                                    <div class="contact-info-right">
-                                        <div class="contact-details-grid">
-                                            <div class="contact-item animate-fade-in delay-400">
-                                                <i class="bi-telephone"></i>
-                                                <div class="contact-text">
-                                                    <strong>Telefon</strong>
-                                                    <a href="tel:+420123456789">
-                                                        <span>+420 123 456 789</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            <div class="contact-item animate-fade-in delay-300">
-                                                <i class="bi bi-envelope"></i>
-                                                <div class="contact-text">
-                                                    <strong>Email</strong>
-                                                    <a href="mailto:email@zednicke-prace.cz">
-                                                        <span>email@zednicke-prace.cz</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="contact-item animate-fade-in delay-300">
-                                                <i class="bi bi-building"></i>
-                                                <div class="contact-text">
-                                                    <strong>IČO</strong>
-                                                    <span>17290422</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="contact-item animate-fade-in delay-300">
-                                                <i class="bi bi-geo-alt"></i>
-                                                <div class="contact-text">
-                                                    <strong>Působnost</strong>
-                                                    <span>Celá ČR</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <!-- Footer - Vylepšený design -->
         <footer class="footer">
-            <div class="footer-content">
-                <p class="footer-text animate-fade-in delay-200">
-                    © {{ currentYear }} Tomáš Kamenský - Všechna práva vyhrazena
-                </p>
+            <div class="footer-wave">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="wave-fill"></path>
+                </svg>
+            </div>
+            
+            <div class="footer-container animate animate-scale animate-duration-1000">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="footer-logo-text">TK</div>
+                </div>
+                
+                <div class="footer-content">
+                    <p class="copyright">&copy; {{ new Date().getFullYear() }} Tomáš Kamenský - Veškerá práva vyhrazena</p>
+                </div>
+            </div>
+            
+            <div class="footer-pattern animate animate-scale animate-duration-1000">
+                <div class="pattern-dot dot-1"></div>
+                <div class="pattern-dot dot-2"></div>
+                <div class="pattern-dot dot-3"></div>
+                <div class="pattern-dot dot-4"></div>
+                <div class="pattern-dot dot-5"></div>
+                <div class="pattern-dot dot-6"></div>
             </div>
         </footer>
 
-        <div class="modal fade" id="imageModal" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <img :src="selectedImage" class="img-fluid" v-if="selectedImage">
+        <!-- Univerzální modální okno -->
+        <div class="universal-modal-overlay" :class="{ 'active': modalActive }" @click.self="closeModal">
+            <div class="universal-modal" :class="{ 'active': modalActive }">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <div class="modal-icon">
+                            <i class="fas" :class="modalData.icon || 'fa-info-circle'"></i>
+                        </div>
+                        <div>
+                            <h3>{{ modalData.title }}</h3>
+                            <span v-if="modalData.subtitle" class="modal-subtitle">{{ modalData.subtitle }}</span>
+                        </div>
                     </div>
+                    <button class="modal-close" @click="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" :class="modalData.type">
+                    <!-- Upravený obsah pro služby v modálním okně -->
+                    <template v-if="modalData.type === 'service'">
+                        <div class="project-gallery"> <!-- Změna z modal-gallery-container na project-gallery pro konzistenci -->
+                            <div class="gallery-main-image">
+                                <img :src="modalData.images ? modalData.images[currentModalImageIndex] : ''" 
+                                     :alt="modalData.title ? modalData.title + ' - obrázek ' + (currentModalImageIndex + 1) : 'Obrázek'"
+                                >
+                                <div class="gallery-navigation">
+                                    <button class="gallery-nav-btn prev" @click="prevModalImage">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button class="gallery-nav-btn next" @click="nextModalImage">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="gallery-thumbs">
+                                <div v-for="(image, i) in modalData.images" 
+                                    :key="i" 
+                                    class="gallery-thumb" 
+                                    :class="{ 'active': i === currentModalImageIndex }"
+                                    @click="setModalImage(i)">
+                                    <img :src="image" :alt="`${modalData.title} - náhled ${i+1}`">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-info">
+                            <div class="modal-description">
+                                <h4>O této službě</h4>
+                                <p>{{ modalData.description }}</p>
+                                
+                                <div class="modal-features">
+                                    <div class="feature-column">
+                                        <h5>Co nabízíme</h5>
+                                        <ul>
+                                            <li v-for="(feature, i) in modalData.features" :key="i">
+                                                <i class="fas fa-check-circle"></i> {{ feature }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-cta">
+                                <a href="#kontakt" class="btn-primary" @click="closeModal">
+                                    <i class="fas fa-envelope"></i> Nezávazná poptávka
+                                </a>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <!-- Obsah pro projekty -->
+                    <template v-if="modalData.type === 'project'">
+                        <div class="project-gallery">
+                            <div class="gallery-main-image">
+                                <img :src="modalData.images[currentModalImageIndex]" :alt="modalData.title">
+                                <div class="gallery-navigation">
+                                    <button class="gallery-nav-btn prev" @click="prevModalImage">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button class="gallery-nav-btn next" @click="nextModalImage">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="gallery-thumbs">
+                                <div v-for="(image, i) in modalData.images" 
+                                     :key="i" 
+                                     class="gallery-thumb" 
+                                     :class="{ 'active': i === currentModalImageIndex }"
+                                     @click="setModalImage(i)">
+                                    <img :src="image" :alt="`${modalData.title} - obrázek ${i+1}`">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-details">
+                                <div class="project-detail-item">
+                                    <div class="detail-icon">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                    <div class="detail-content">
+                                        <span class="detail-label">Klient</span>
+                                        <span class="detail-value">{{ modalData.client }}</span>
+                                    </div>
+                                </div>
+                                <div class="project-detail-item">
+                                    <div class="detail-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="detail-content">
+                                        <span class="detail-label">Lokalita</span>
+                                        <span class="detail-value">{{ modalData.location }}</span>
+                                    </div>
+                                </div>
+                                <div class="project-detail-item">
+                                    <div class="detail-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <div class="detail-content">
+                                        <span class="detail-label">Dokončeno</span>
+                                        <span class="detail-value">{{ modalData.date }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-description">
+                                <h4>O projektu</h4>
+                                <p>{{ modalData.description }}</p>
+                                
+                                <div class="project-scope">
+                                    <h5>Rozsah prací</h5>
+                                    <ul>
+                                        <li v-for="(item, i) in modalData.scope" :key="i">
+                                            <i class="fas fa-check-circle"></i> {{ item }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="project-cta">
+                                <a href="#kontakt" class="btn-primary" @click="closeModal">
+                                    <i class="fas fa-envelope"></i> Mám zájem o podobný projekt
+                                </a>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <!-- Zde můžete přidat další šablony pro jiné typy modálů -->
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
